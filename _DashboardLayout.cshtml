@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+
+    <title>LogiCore Dashboard</title>
+
+    <link href="~/Content/dashboard.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <div class="logo">
+            LogiCore
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="/Admin/Dashboard">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="/Admin/Clients">Manage Clients</a>
+            </li>
+
+            <li>
+                <a href="/Admin/Shipments">Manage Shipments</a>
+            </li>
+
+            <li>
+                <a href="/Admin/Reports">Reports</a>
+            </li>
+           @*<li>
+                <a href="@Url.Action("Index","Home")">
+                    Home
+                </a>
+            </li>*@
+
+            <li>
+                <a href="/Admin/Logout">Logout</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="main-content">
+
+        @RenderBody()
+
+    </div>
+
+</body>
+</html>
