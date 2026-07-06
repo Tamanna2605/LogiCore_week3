@@ -1,0 +1,60 @@
+﻿@model List<Tamanna.Models.Client>
+
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="page-header">
+
+    <h1>Manage Clients</h1>
+
+    <a href="/Admin/AddClient" class="add-btn">
+        + Add Client
+    </a>
+
+</div>
+
+<div class="table-section">
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ClientName</td>
+                    <td>@item.CompanyName</td>
+                    <td>@item.Email</td>
+                    <td>@item.Phone</td>
+
+                    <td>
+                        <a href="/Admin/EditClient/@item.ClientId"
+                           class="edit-btn">
+                            Edit
+                        </a>
+
+                        <a href="/Admin/DeleteClient/@item.ClientId"
+                           class="delete-btn"
+                           onclick="return confirm('Delete this client?');">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>

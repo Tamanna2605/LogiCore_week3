@@ -1,0 +1,65 @@
+﻿@model Tamanna.Models.Shipment
+
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<h1>Add Shipment</h1>
+
+<div class="form-container">
+
+    @using (Html.BeginForm("AddShipment", "Admin", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label>Tracking ID</label>
+            @Html.TextBoxFor(m => m.TrackingId)
+        </div>
+    <div class="form-group">
+        <label>Client</label>
+
+        @Html.DropDownListFor(m => m.ClientId,
+        new SelectList(
+            (IEnumerable<Tamanna.Models.Client>)ViewBag.Clients,
+            "ClientId",
+            "CompanyName"
+        ),
+        "-- Select Client --",
+        new { @class = "form-control" })
+    </div>
+        <div class="form-group">
+            <label>Origin</label>
+            @Html.TextBoxFor(m => m.Origin)
+        </div>
+
+        <div class="form-group">
+            <label>Destination</label>
+            @Html.TextBoxFor(m => m.Destination)
+        </div>
+
+        <div class="form-group">
+            <label>Status</label>
+            @Html.DropDownListFor(m => m.Status,
+                new List<SelectListItem>
+                {
+                    new SelectListItem { Text="Pending", Value="Pending" },
+                    new SelectListItem { Text="In Transit", Value="In Transit" },
+                    new SelectListItem { Text="Delivered", Value="Delivered" }
+                })
+        </div>
+
+        <div class="form-group">
+            <label>ETA</label>
+            @Html.TextBoxFor(m => m.ETA, "{0:yyyy-MM-dd}", new { type = "date" })
+        </div>
+
+        <div class="form-group">
+            <label>Progress</label>
+            @Html.TextBoxFor(m => m.Progress)
+        </div>
+
+        <button type="submit" class="save-btn">
+            Save Shipment
+        </button>
+    }
+
+</div>

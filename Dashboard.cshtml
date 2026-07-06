@@ -1,0 +1,80 @@
+﻿@model Tamanna.Models.DashboardViewModel
+@using System.Linq
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<h1>Dashboard Overview</h1>
+
+<div class="analytics">
+
+    <div class="card">
+        <h2>@Model.TotalShipments</h2>
+        <p>Total Shipments</p>
+    </div>
+
+    <div class="card">
+        <h2>@Model.Delivered</h2>
+        <p>Delivered</p>
+    </div>
+
+    <div class="card">
+        <h2>@Model.InTransit</h2>
+        <p>In Transit</p>
+    </div>
+
+    <div class="card">
+        <h2>@Model.Pending</h2>
+        <p>Pending</p>
+    </div>
+    <div class="card">
+    <h2>@Model.TotalClients</h2>
+    <p>Total Clients</p>
+</div>
+
+</div>
+
+
+<div class="table-section">
+
+    <h2>Recent Shipments</h2>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Tracking ID</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+           @if (Model.RecentShipments != null && Model.RecentShipments.Any())
+           {
+               foreach (var item in Model.RecentShipments)
+               {
+                <tr>
+                    <td>@item.TrackingId</td>
+                    <td>@item.Origin</td>
+                    <td>@item.Destination</td>
+                    <td>@item.Status</td>
+                </tr>
+               }
+           }
+           else
+           {
+            <tr>
+                <td colspan="4" style="text-align:center; padding:15px;">
+                    No recent shipments available
+                </td>
+            </tr>
+           }
+
+        </tbody>
+
+    </table>
+
+</div>

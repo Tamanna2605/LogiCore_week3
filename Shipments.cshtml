@@ -1,0 +1,63 @@
+﻿@model List<Tamanna.Models.Shipment>
+    @{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="page-header">
+
+    <h1>Manage Shipments</h1>
+
+    <a href="/Admin/AddShipment" class="add-btn">
+        + Add Shipment
+    </a>
+
+</div>
+
+<div class="table-section">
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Tracking ID</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Status</th>
+                <th>Progress</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.TrackingId</td>
+                    <td>@item.Origin</td>
+                    <td>@item.Destination</td>
+                    <td>@item.Status</td>
+                    <td>@item.Progress%</td>
+
+                    <td>
+                    <td>
+                        <a href="/Admin/EditShipment/@item.ShipmentId"
+                           class="edit-btn">
+                            Edit
+                        </a>
+
+                        <a href="/Admin/DeleteShipment/@item.ShipmentId"
+                           class="delete-btn"
+                           onclick="return confirm('Are you sure you want to delete this shipment?');">
+                            Delete
+                        </a>
+                    </td>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>
